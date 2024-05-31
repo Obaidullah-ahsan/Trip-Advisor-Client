@@ -1,5 +1,5 @@
 import { RiMenuUnfoldFill } from "react-icons/ri";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const navLinks = (
@@ -101,10 +101,18 @@ const Navbar = () => {
           <ul className="menu-horizontal px-1 font-semibold">{navLinks}</ul>
         </div>
         <div className="navbar-end flex gap-2">
-          <a className="btn min-h-10 h-10 btn-outline text-[#FF9051]">Login</a>
-          <a className="btn min-h-10 h-10 btn-outline text-[#FF9051]">
+          <Link
+            to="/login"
+            className="btn min-h-10 h-10 btn-outline text-[#FF9051]"
+          >
+            Login
+          </Link>
+          <Link
+            to="/register"
+            className="btn min-h-10 h-10 btn-outline text-[#FF9051]"
+          >
             Register
-          </a>
+          </Link>
         </div>
       </div>
     </div>
