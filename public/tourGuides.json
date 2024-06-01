@@ -1,0 +1,167 @@
+[
+  {
+    "name": "John Doe",
+    "profile_picture": "https://i.ibb.co/F3JLc9w/woman-sitting-luggage.png",
+    "contact_details": {
+      "email": "john.doe@example.com",
+      "phone": "+1-555-123-4567"
+    },
+    "education": "B.A. in History, University of California, Berkeley",
+    "skills": [
+      "Historical Tours",
+      "Multi-lingual (English, Spanish)",
+      "Public Speaking",
+      "Customer Service"
+    ],
+    "work_experience": {
+      "company": "Golden Gate Tours",
+      "position": "Senior Tour Guide",
+      "duration": "2015-2023"
+    },
+    "about": "John is a passionate historian with over a decade of experience guiding tours in San Francisco. He specializes in providing engaging and informative historical tours, sharing his love for the city's rich past with visitors from around the world."
+  },
+  {
+    "name": "Maria Gonzalez",
+    "profile_picture": "https://i.ibb.co/yB3KGSG/about-4-jpg.webp",
+    "contact_details": {
+      "email": "maria.gonzalez@example.com",
+      "phone": "+1-555-234-5678"
+    },
+    "education": "M.A. in Art History, New York University",
+    "skills": [
+      "Art Tours",
+      "Multi-lingual (English, Spanish, French)",
+      "Art History",
+      "Customer Engagement"
+    ],
+    "work_experience": {
+      "company": "NYC Art Tours",
+      "position": "Lead Art Guide",
+      "duration": "2016-2023"
+    },
+    "about": "Maria has a deep passion for art and art history, with extensive experience leading art tours in New York City. She is fluent in three languages and enjoys engaging with guests, making each tour a unique and enriching experience."
+  },
+  {
+    "name": "Liam Chen",
+    "profile_picture": "https://i.ibb.co/Qd1j8fm/istockphoto-951396098-1024x10244.jpg",
+    "contact_details": {
+      "email": "liam.chen@example.com",
+      "phone": "+1-555-345-6789"
+    },
+    "education": "B.Sc. in Environmental Science, Stanford University",
+    "skills": [
+      "Nature Tours",
+      "Wildlife Knowledge",
+      "Multi-lingual (English, Chinese)",
+      "First Aid"
+    ],
+    "work_experience": {
+      "company": "Yosemite National Park",
+      "position": "Nature Guide",
+      "duration": "2018-2023"
+    },
+    "about": "Liam is an enthusiastic nature lover with a background in environmental science. He has been guiding nature tours for several years, sharing his extensive knowledge of wildlife and ecosystems with tour groups in some of America's most beautiful national parks."
+  },
+  {
+    "name": "Elena Petrova",
+    "profile_picture": "https://i.ibb.co/GVJn8YP/tourists-visiting-city-wearing-travel-mask.jpg",
+    "contact_details": {
+      "email": "elena.petrova@example.com",
+      "phone": "+1-555-456-7890"
+    },
+    "education": "M.A. in Linguistics, University of Moscow",
+    "skills": [
+      "Cultural Tours",
+      "Multi-lingual (Russian, English, German)",
+      "Cultural Anthropology",
+      "Public Relations"
+    ],
+    "work_experience": {
+      "company": "Moscow City Tours",
+      "position": "Chief Tour Guide",
+      "duration": "2015-2023"
+    },
+    "about": "Elena has a rich background in linguistics and cultural anthropology, making her tours in Moscow deeply insightful and engaging. She enjoys sharing her knowledge of Russian culture and history with visitors from around the globe."
+  },
+  {
+    "name": "Ahmed Ali",
+    "profile_picture": "https://i.ibb.co/GVJn8YP/tourists-visiting-city-wearing-travel-mask.jpg",
+    "contact_details": {
+      "email": "ahmed.ali@example.com",
+      "phone": "+1-555-567-8901"
+    },
+    "education": "B.A. in Archaeology, Cairo University",
+    "skills": [
+      "Historical Tours",
+      "Archaeology",
+      "Multi-lingual (Arabic, English)",
+      "Storytelling"
+    ],
+    "work_experience": {
+      "company": "Egyptian Pyramids Tours",
+      "position": "Lead Guide",
+      "duration": "2017-2023"
+    },
+    "about": "Ahmed is an archaeologist with a deep knowledge of Egypt's ancient history. He has been guiding tours around the pyramids and museums of Cairo for many years, captivating his guests with fascinating stories and historical insights."
+  },
+  {
+    "name": "Sophie Dubois",
+    "profile_picture": "https://i.ibb.co/Qd1j8fm/istockphoto-951396098-1024x10244.jpg",
+    "contact_details": {
+      "email": "sophie.dubois@example.com",
+      "phone": "+1-555-678-9012"
+    },
+    "education": "B.A. in Art History, Sorbonne University",
+    "skills": [
+      "Museum Tours",
+      "Multi-lingual (French, English)",
+      "Art History",
+      "Customer Interaction"
+    ],
+    "work_experience": {
+      "company": "Louvre Museum",
+      "position": "Senior Guide",
+      "duration": "2016-2023"
+    }
+  },
+  {
+    "name": "Ravi Kumar",
+    "profile_picture": "https://i.ibb.co/yB3KGSG/about-4-jpg.webp",
+    "contact_details": {
+      "email": "ravi.kumar@example.com",
+      "phone": "+1-555-789-0123"
+    },
+    "education": "M.A. in History, Delhi University",
+    "skills": [
+      "Cultural Tours",
+      "Historical Knowledge",
+      "Multi-lingual (Hindi, English)",
+      "Public Speaking"
+    ],
+    "work_experience": {
+      "company": "Delhi Heritage Tours",
+      "position": "Chief Guide",
+      "duration": "2017-2023"
+    }
+  },
+  {
+    "name": "Emma Watson",
+    "profile_picture": "https://i.ibb.co/F3JLc9w/woman-sitting-luggage.png",
+    "contact_details": {
+      "email": "emma.watson@example.com",
+      "phone": "+1-555-890-1234"
+    },
+    "education": "B.A. in Anthropology, University of London",
+    "skills": [
+      "Historical Tours",
+      "Anthropology",
+      "Multi-lingual (English, Italian)",
+      "Research"
+    ],
+    "work_experience": {
+      "company": "London Historical Tours",
+      "position": "Senior Guide",
+      "duration": "2018-2023"
+    }
+  }
+]

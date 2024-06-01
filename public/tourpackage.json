@@ -1,0 +1,38 @@
+[
+  {
+    "image": "https://i.ibb.co/TtxwtLG/28032.jpg",
+    "tour_type": "Adventure",
+    "tour_title": "Mountain Hiking Expedition",
+    "price": 299.99
+  },
+  {
+    "image": "https://i.ibb.co/RzP56vv/beautiful-girl-sitting-sunrise-viewpoint-ja-bo-village-mae-hong-son-province-thailand.jpg",
+    "tour_type": "Cultural",
+    "tour_title": "Historic City Exploration",
+    "price": 159.99
+  },
+  {
+    "image": "https://i.ibb.co/26hVKZ1/aerial-view-beautiful-koh-tao-island-surat-thani-thailand.jpg",
+    "tour_type": "Beach",
+    "tour_title": "Tropical Island Getaway",
+    "price": 499.99
+  },
+  {
+    "image": "https://i.ibb.co/722NYFh/19667.jpg",
+    "tour_type": "Wildlife",
+    "tour_title": "Safari Adventure",
+    "price": 399.99
+  },
+  {
+    "image": "https://i.ibb.co/2KY3n3k/1924.jpg",
+    "tour_type": "Luxury",
+    "tour_title": "Luxury Cruise Experience",
+    "price": 899.99
+  },
+  {
+    "image": "https://i.ibb.co/722NYFh/19667.jpg",
+    "tour_type": "Eco-tourism",
+    "tour_title": "Rainforest Exploration",
+    "price": 279.99
+  }
+]
