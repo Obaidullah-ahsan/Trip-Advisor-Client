@@ -2,8 +2,8 @@ import "./Banner.css";
 
 const Banner = () => {
   return (
-    <div className="h-[630px] banner-bg flex items-center">
-      <div className="flex flex-col justify-center h-full max-w-3xl max-h-[450px] p-20 bg-base-100 bg-opacity-30">
+    <div className="md:h-[500px]  lg:h-[630px] banner-bg flex items-center">
+      <div className="flex flex-col justify-center h-full max-w-xl lg:max-w-3xl max-h-[300px]  lg:max-h-[450px] p-20 bg-base-100 bg-opacity-30">
         <h2 className="text-5xl font-bold leading-[60px] mb-3">
           <span className="text-[80px]">Discover</span><br />New Destination
         </h2>
