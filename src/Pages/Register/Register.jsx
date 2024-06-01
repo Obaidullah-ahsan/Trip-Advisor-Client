@@ -1,8 +1,44 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/traveler.svg";
 import GoogleLogin from "../../Components/Shared/GoogleLogin";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Register = () => {
+  const { createUser, updateUser } = useAuth();
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    createUser(email, password)
+      .then((result) => {
+        updateUser(name, photo)
+          .then(() => {})
+          .catch((error) => {
+            console.log(error);
+          });
+        console.log(result.user);
+        Swal.fire({
+          title: "Success",
+          text: "User Register Successfully",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+        form.reset();
+      })
+      .catch((error) => {
+        console.log(error.message);
+        Swal.fire({
+          title: "Error!",
+          text: error.code.slice(5, 50),
+          icon: "error",
+          confirmButtonText: "Try again",
+        });
+      });
+  };
   return (
     <div className="flex w-full my-12 max-w-sm mx-auto overflow-hidden bg-base-100 rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-5xl">
       <div className="hidden mx-6 lg:flex justify-center lg:w-1/2">
@@ -13,7 +49,7 @@ const Register = () => {
         <h2 className="text-center mx-auto text-2xl font-bold">
           Create an account
         </h2>
-        <form>
+        <form onSubmit={handleRegister}>
           <div className="mt-4">
             <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">
               Name

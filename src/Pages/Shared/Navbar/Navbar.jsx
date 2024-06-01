@@ -1,7 +1,16 @@
 import { RiMenuUnfoldFill } from "react-icons/ri";
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 
 const Navbar = () => {
+  const { user, logout } = useAuth();
+  const handleLogout = () => {
+    logout()
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const navLinks = (
     <>
       <li className="px-4">
@@ -100,19 +109,32 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu-horizontal px-1 font-semibold">{navLinks}</ul>
         </div>
-        <div className="navbar-end flex gap-2">
-          <Link
-            to="/login"
-            className="btn min-h-10 h-10 btn-outline text-[#FF9051]"
-          >
-            Login
-          </Link>
-          <Link
-            to="/register"
-            className="btn min-h-10 h-10 btn-outline text-[#FF9051]"
-          >
-            Register
-          </Link>
+        <div className="navbar-end">
+          {user ? (
+            <div>
+              <button
+                onClick={handleLogout}
+                className="btn min-h-10 h-10 btn-outline text-[#FF9051]"
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <div className="flex gap-2">
+              <Link
+                to="/login"
+                className="btn min-h-10 h-10 btn-outline text-[#FF9051]"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="btn min-h-10 h-10 btn-outline text-[#FF9051]"
+              >
+                Register
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>
