@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
+
 const PackageCard = ({ pac }) => {
-  const { image, tour_type, tour_title, price } = pac;
+  const { _id, image, tour_type, tour_title, price } = pac;
   return (
     <div className="card card-compact rounded-md bg-base-100 hover:shadow-xl p-3">
       <figure>
@@ -12,9 +14,9 @@ const PackageCard = ({ pac }) => {
           From ${price}/
           <span className="text-gray-600 font-normal text-sm">Person</span>
         </h3>
-        <div className="card-actions">
+        <Link to={`/packagedetails/${_id}`} className="card-actions">
           <button className="btn btn-outline">View Details</button>
-        </div>
+        </Link>
       </div>
     </div>
   );

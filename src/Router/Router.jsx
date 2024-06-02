@@ -7,6 +7,7 @@ import AllPackages from "../Pages/AllPackages/AllPackages";
 import GuideProfile from "../Pages/GuideProfile/GuideProfile";
 import AllReview from "../Components/AllReview/AllReview";
 import CategoryBasePackages from "../Pages/CategoryBasePackages/CategoryBasePackages";
+import PackageDetails from "../Pages/PackageDetails/PackageDetails";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/allpackages",
         element: <AllPackages></AllPackages>,
+      },
+      {
+        path: "/packagedetails/:id",
+        element: <PackageDetails></PackageDetails>,
       },
       {
         path: "/guideProfile/:id",

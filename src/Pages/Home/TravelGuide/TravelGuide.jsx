@@ -6,7 +6,7 @@ import OurPackages from "../../../Components/OurPackages/OurPackages";
 import OurGuides from "../../../Components/OurGuides/OurGuides";
 
 const TravelGuide = () => {
-  const [tabIndex, setTabIndex] = useState(0);
+  const [tabIndex, setTabIndex] = useState(2);
   return (
     <div className="mx-20 my-16">
       <Tabs
