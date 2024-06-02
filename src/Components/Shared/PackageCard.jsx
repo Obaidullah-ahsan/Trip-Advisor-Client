@@ -1,5 +1,5 @@
-const PackageCard = ({ item }) => {
-  const { image, tour_type, tour_title, price } = item;
+const PackageCard = ({ pac }) => {
+  const { image, tour_type, tour_title, price } = pac;
   return (
     <div className="card card-compact rounded-md bg-base-100 hover:shadow-xl p-3">
       <figure>

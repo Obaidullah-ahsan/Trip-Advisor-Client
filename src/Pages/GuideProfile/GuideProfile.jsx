@@ -1,12 +1,35 @@
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { Link, Outlet, useParams } from "react-router-dom";
+import { BiArrowBack } from "react-icons/bi";
+import GiveReview from "../../Components/GiveReview/GiveReview";
+
 const GuideProfile = () => {
+  const { id } = useParams();
+  const axiosPublic = useAxiosPublic();
+  const { data: guide = [] } = useQuery({
+    queryKey: ["guide"],
+    queryFn: async () => {
+      const { data } = await axiosPublic.get(`/guides/${id}`);
+      return data;
+    },
+  });
   return (
-    <div className="mx-20">
+    <div className="lg:mx-20">
       <section className="bg-white dark:bg-gray-900">
         <div className="container px-6 py-10 mx-auto">
+          <div>
+            <Link
+              to="/"
+              className="mb-5 flex gap-2 text-lg items-center font-semibold"
+            >
+              <BiArrowBack /> Back to Home
+            </Link>
+          </div>
           <div className="lg:-mx-6 lg:flex lg:items-center">
             <img
-              className="object-cover object-center lg:w-1/2 lg:mx-6 w-full h-96 rounded-lg lg:h-[40rem]"
-              src="https://images.unsplash.com/photo-1499470932971-a90681ce8530?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+              className="object-cover object-center lg:w-1/2 lg:mx-6 w-full h-96 rounded-lg lg:h-[45rem]"
+              src={guide?.profile_picture}
               alt=""
             />
 
@@ -14,28 +37,22 @@ const GuideProfile = () => {
               <p className="text-5xl font-semibold text-blue-500 ">“</p>
 
               <h1 className="text-2xl font-semibold text-blue-500 dark:text-white lg:text-3xl lg:w-96">
-                Johan Deo
+                {guide?.name}
               </h1>
 
               <p className="max-w-lg mt-2 text-gray-500 dark:text-gray-400 ">
-                John is a passionate historian with over a decade of experience
-                guiding tours in San Francisco. He specializes in providing
-                engaging and informative historical tours, sharing his love for
-                the citys rich past with visitors from around the world.
+                {guide?.about}
               </p>
 
-              <h3 className="mt-2 text-lg font-medium">
-                B.Sc. in Environmental Science, Stanford University
-              </h3>
+              <h3 className="mt-2 text-lg font-medium">{guide?.education}</h3>
               <div>
                 <h3 className="mt-2 text-lg font-semibold text-blue-500">
                   Skills :
                 </h3>
                 <ul className="pl-7" style={{ listStyleType: "disc" }}>
-                  <li>Historical Tours</li>
-                  <li>Archaeology</li>
-                  <li>Multi-lingual (Arabic, English)</li>
-                  <li>Storytelling</li>
+                  {guide?.skills?.map((skill, idx) => (
+                    <li key={idx}>{skill}</li>
+                  ))}
                 </ul>
               </div>
               <div>
@@ -43,9 +60,11 @@ const GuideProfile = () => {
                   Work Experiance :
                 </h3>
                 <div className="pl-4">
-                  <p className="font-medium">Yosemite National Park</p>
-                  <p>Nature Guide</p>
-                  <p>2018-2023</p>
+                  <p className="font-medium">
+                    {guide?.work_experience?.company}
+                  </p>
+                  <p>{guide?.work_experience?.position}</p>
+                  <p>{guide?.work_experience?.duration}</p>
                 </div>
               </div>
               <div>
@@ -53,14 +72,22 @@ const GuideProfile = () => {
                   Contact :
                 </h3>
                 <div className="pl-4">
-                  <p>john.doe@example.com</p>
-                  <p>+1-555-123-4567</p>
+                  <p>{guide?.contact_details?.email}</p>
+                  <p>{guide?.contact_details?.phone}</p>
                 </div>
               </div>
+              <Link
+                to={`allreview/${guide?.contact_details?.email}`}
+                className="btn mt-3 btn-outline"
+              >
+                View Reviews
+              </Link>
             </div>
           </div>
         </div>
       </section>
+      <Outlet></Outlet>
+      <GiveReview guide={guide}></GiveReview>
     </div>
   );
 };

@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const OurGuides = () => {
-  const [persons, setPersons] = useState([]);
-  useEffect(() => {
-    fetch("/public/tourGuides.json")
-      .then((res) => res.json())
-      .then((data) => setPersons(data));
-  }, []);
-  console.log(persons);
+  const axiosPublic = useAxiosPublic();
+  const { data: guides = [] } = useQuery({
+    queryKey: ["guides"],
+    queryFn: async () => {
+      const { data } = await axiosPublic.get("/guides");
+      return data;
+    },
+  });
   return (
     <div className="mt-10">
       <div className="overflow-x-auto">
@@ -26,7 +29,7 @@ const OurGuides = () => {
             </tr>
           </thead>
           <tbody>
-            {persons.map((person, idx) => (
+            {guides?.map((person, idx) => (
               <tr key={idx}>
                 <td className="text-left">
                   <p>{idx + 1}</p>
@@ -47,7 +50,12 @@ const OurGuides = () => {
                 <td className="text-left">{person?.contact_details?.email}</td>
                 <td className="text-left">{person?.contact_details?.phone}</td>
                 <th className="text-left">
-                  <Link to="/guideProfile" className="btn btn-outline">details</Link>
+                  <Link
+                    to={`/guideProfile/${person?._id}`}
+                    className="btn btn-outline"
+                  >
+                    Details
+                  </Link>
                 </th>
               </tr>
             ))}

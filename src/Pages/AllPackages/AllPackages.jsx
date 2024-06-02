@@ -1,15 +1,10 @@
-import { useEffect, useState } from "react";
 import PackageCard from "../../Components/Shared/PackageCard";
 import { Link } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
+import usePackages from "../../Hooks/usePackages";
 
 const AllPackages = () => {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    fetch("/public/tourpackage.json")
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, []);
+  const [packages] = usePackages();
   return (
     <div className="mx-20 my-12">
       <div className="flex items-center">
@@ -21,8 +16,8 @@ const AllPackages = () => {
         </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {data.map((item, idx) => (
-          <PackageCard item={item} key={idx}></PackageCard>
+        {packages.map((pac, idx) => (
+          <PackageCard pac={pac} key={idx}></PackageCard>
         ))}
       </div>
     </div>

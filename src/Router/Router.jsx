@@ -5,6 +5,7 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import AllPackages from "../Pages/AllPackages/AllPackages";
 import GuideProfile from "../Pages/GuideProfile/GuideProfile";
+import AllReview from "../Components/AllReview/AllReview";
 
 const router = createBrowserRouter([
   {
@@ -28,8 +29,14 @@ const router = createBrowserRouter([
         element: <AllPackages></AllPackages>,
       },
       {
-        path: "/guideProfile",
+        path: "/guideProfile/:id",
         element: <GuideProfile></GuideProfile>,
+        children: [
+          {
+            path: "allreview/:email",
+            element: <AllReview></AllReview>,
+          },
+        ],
       },
     ],
   },
