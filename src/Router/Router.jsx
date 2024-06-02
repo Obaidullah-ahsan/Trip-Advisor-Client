@@ -6,6 +6,7 @@ import Register from "../Pages/Register/Register";
 import AllPackages from "../Pages/AllPackages/AllPackages";
 import GuideProfile from "../Pages/GuideProfile/GuideProfile";
 import AllReview from "../Components/AllReview/AllReview";
+import CategoryBasePackages from "../Pages/CategoryBasePackages/CategoryBasePackages";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
             element: <AllReview></AllReview>,
           },
         ],
+      },
+      {
+        path: "/categoryBasePackages/:category",
+        element: <CategoryBasePackages></CategoryBasePackages>,
       },
     ],
   },
