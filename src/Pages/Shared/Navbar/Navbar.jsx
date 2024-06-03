@@ -143,7 +143,7 @@ const Navbar = () => {
                   </div>
                 </li>
                 <li>
-                  <Link to="/dashboard" className="btn btn-outline text-[#FF9051] mt-1 min-h-8 h-8">
+                  <Link to="/dashboard/myProfile" className="btn btn-outline text-[#FF9051] mt-1 min-h-8 h-8">
                     Dashboard
                   </Link>
                 </li>

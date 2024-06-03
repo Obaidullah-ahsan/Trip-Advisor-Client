@@ -18,6 +18,7 @@ import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import AddPackage from "../Pages/Dashboard/AddPackage/AddPackage";
 import DashboardGuideProfile from "../Pages/Dashboard/DashboardGuideProfile/DashboardGuideProfile";
 import GuideAssignedTours from "../Pages/Dashboard/GuideAssignedTours/GuideAssignedTours";
+import PrivateRoutes from "../Routes/PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -62,8 +63,30 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoutes>
+        <Dashboard></Dashboard>
+      </PrivateRoutes>
+    ),
     children: [
+      // Tourist Routes
+      {
+        path: "myProfile",
+        element: <MyProfile></MyProfile>,
+      },
+      {
+        path: "bookings",
+        element: <MyBookings></MyBookings>,
+      },
+      {
+        path: "myWishlist",
+        element: <MyWishlist></MyWishlist>,
+      },
+      {
+        path: "requestAdmin",
+        element: <RequestToAdmin></RequestToAdmin>,
+      },
+
       // Admin Routes
       {
         path: "adminProfile",
@@ -86,24 +109,6 @@ const router = createBrowserRouter([
       {
         path: "guideAssignedTours",
         element: <GuideAssignedTours></GuideAssignedTours>,
-      },
-
-      // Tourist Routes
-      {
-        path: "myProfile",
-        element: <MyProfile></MyProfile>,
-      },
-      {
-        path: "bookings",
-        element: <MyBookings></MyBookings>,
-      },
-      {
-        path: "myWishlist",
-        element: <MyWishlist></MyWishlist>,
-      },
-      {
-        path: "requestAdmin",
-        element: <RequestToAdmin></RequestToAdmin>,
       },
     ],
   },
