@@ -24,16 +24,13 @@ const Login = () => {
           role: "tourist",
         };
         axiosPublic.post("/users", userInfo).then((res) => {
-          if (res.data?.insertedId) {
-            Swal.fire({
-              title: "Success!",
-              text: "User Login Successfully",
-              icon: "success",
-              confirmButtonText: "Ok",
-            });
-            form.reset();
-          }
           console.log(res.data);
+        });
+        Swal.fire({
+          title: "Success!",
+          text: "User Login Successfully",
+          icon: "success",
+          confirmButtonText: "Ok",
         });
         navigate(location?.state ? location.state : "/");
         form.reset();

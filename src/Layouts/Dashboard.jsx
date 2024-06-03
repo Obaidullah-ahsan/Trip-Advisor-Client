@@ -3,13 +3,12 @@ import { Outlet } from "react-router-dom";
 import TouristItem from "../Components/Dashboard/Sidebar/TouristItem";
 import AdminItem from "../Components/Dashboard/Sidebar/AdminItem";
 import GuideItem from "../Components/Dashboard/Sidebar/GuideItem";
+import useRole from "../Hooks/useRole";
 
 const Dashboard = () => {
-//   const { user } = useAuth();
+  //   const { user } = useAuth();
 
-  const isAdmin = false;
-  const isGuide = false;
-  const isTourist = true;
+  const [role] = useRole();
   return (
     <div className="flex">
       <div className="drawer lg:w-64 lg:drawer-open">
@@ -31,9 +30,9 @@ const Dashboard = () => {
           ></label>
           <ul className="menu p-4 w-64 min-h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
-            {isTourist && <TouristItem></TouristItem>}
-            {isAdmin && <AdminItem></AdminItem>}
-            {isGuide && <GuideItem></GuideItem>}
+            {role === "tourist" && <TouristItem></TouristItem>}
+            {role === "admin" && <AdminItem></AdminItem>}
+            {role === "guide" && <GuideItem></GuideItem>}
           </ul>
         </div>
       </div>
