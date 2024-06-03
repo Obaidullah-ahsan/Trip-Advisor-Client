@@ -4,7 +4,6 @@ import GoogleLogin from "../../Components/Shared/GoogleLogin";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
   const { createUser, updateUser } = useAuth();
@@ -27,12 +26,15 @@ const Register = () => {
               status: "Verified",
               role: "tourist",
             };
-            axiosPublic.post("/users", userInfo).then((res) => {
-              if (res.data?.insertedId) {
-                toast.success("User Register Successfully");
-                form.reset();
-                navigate("/");
-              }
+            axiosPublic.post("/users", userInfo).then(() => {
+              Swal.fire({
+                title: "Success!",
+                text: "User Login Successfully",
+                icon: "success",
+                confirmButtonText: "Ok",
+              });
+              form.reset();
+              navigate("/");
             });
           })
           .catch((error) => {
@@ -140,7 +142,6 @@ const Register = () => {
           </Link>
         </p>
       </div>
-      <Toaster />
     </div>
   );
 };

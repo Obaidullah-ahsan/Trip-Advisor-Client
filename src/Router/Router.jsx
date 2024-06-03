@@ -12,7 +12,6 @@ import Dashboard from "../Layouts/Dashboard";
 import MyProfile from "../Pages/Dashboard/MyProfile/MyProfile";
 import MyBookings from "../Pages/Dashboard/MyBookings/MyBookings";
 import MyWishlist from "../Pages/Dashboard/MyWishlist/MyWishlist";
-import RequestToAdmin from "../Pages/Dashboard/RequestToAdmin/RequestToAdmin";
 import AdminProfile from "../Pages/Dashboard/AdminProfile/AdminProfile";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import AddPackage from "../Pages/Dashboard/AddPackage/AddPackage";
@@ -81,10 +80,6 @@ const router = createBrowserRouter([
       {
         path: "myWishlist",
         element: <MyWishlist></MyWishlist>,
-      },
-      {
-        path: "requestAdmin",
-        element: <RequestToAdmin></RequestToAdmin>,
       },
 
       // Admin Routes
