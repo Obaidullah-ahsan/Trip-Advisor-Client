@@ -8,6 +8,16 @@ import GuideProfile from "../Pages/GuideProfile/GuideProfile";
 import AllReview from "../Components/AllReview/AllReview";
 import CategoryBasePackages from "../Pages/CategoryBasePackages/CategoryBasePackages";
 import PackageDetails from "../Pages/PackageDetails/PackageDetails";
+import Dashboard from "../Layouts/Dashboard";
+import MyProfile from "../Pages/Dashboard/MyProfile/MyProfile";
+import MyBookings from "../Pages/Dashboard/MyBookings/MyBookings";
+import MyWishlist from "../Pages/Dashboard/MyWishlist/MyWishlist";
+import RequestToAdmin from "../Pages/Dashboard/RequestToAdmin/RequestToAdmin";
+import AdminProfile from "../Pages/Dashboard/AdminProfile/AdminProfile";
+import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
+import AddPackage from "../Pages/Dashboard/AddPackage/AddPackage";
+import DashboardGuideProfile from "../Pages/Dashboard/DashboardGuideProfile/DashboardGuideProfile";
+import GuideAssignedTours from "../Pages/Dashboard/GuideAssignedTours/GuideAssignedTours";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +57,53 @@ const router = createBrowserRouter([
       {
         path: "/categoryBasePackages/:category",
         element: <CategoryBasePackages></CategoryBasePackages>,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      // Admin Routes
+      {
+        path: "adminProfile",
+        element: <AdminProfile></AdminProfile>,
+      },
+      {
+        path: "addPackage",
+        element: <AddPackage></AddPackage>,
+      },
+      {
+        path: "manageUsers",
+        element: <ManageUsers></ManageUsers>,
+      },
+
+      // Guide Routes
+      {
+        path: "guideProfile",
+        element: <DashboardGuideProfile></DashboardGuideProfile>,
+      },
+      {
+        path: "guideAssignedTours",
+        element: <GuideAssignedTours></GuideAssignedTours>,
+      },
+
+      // Tourist Routes
+      {
+        path: "myProfile",
+        element: <MyProfile></MyProfile>,
+      },
+      {
+        path: "bookings",
+        element: <MyBookings></MyBookings>,
+      },
+      {
+        path: "myWishlist",
+        element: <MyWishlist></MyWishlist>,
+      },
+      {
+        path: "requestAdmin",
+        element: <RequestToAdmin></RequestToAdmin>,
       },
     ],
   },
