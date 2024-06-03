@@ -4,7 +4,7 @@ import "@smastrom/react-rating/style.css";
 import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
-import Swal from "sweetalert2";
+import toast, { Toaster } from "react-hot-toast";
 
 const GiveReview = ({ guide }) => {
   const { user } = useAuth();
@@ -22,13 +22,7 @@ const GiveReview = ({ guide }) => {
     console.log(review);
     const res = await axiosSecure.post("/reviews", review);
     if (res.data.insertedId) {
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Your work has been saved",
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      toast.success("Give Review Successfully");
     }
   };
   return (
@@ -76,6 +70,7 @@ const GiveReview = ({ guide }) => {
               ></textarea>
             </div>
             <button className="btn ml-1">Submit</button>
+            <Toaster />
           </form>
         </div>
       </section>

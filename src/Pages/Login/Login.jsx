@@ -3,9 +3,11 @@ import logo from "../../assets/traveler.svg";
 import GoogleLogin from "../../Components/Shared/GoogleLogin";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Login = () => {
   const { loginUser } = useAuth();
+  const axiosPublic = useAxiosPublic();
   const location = useLocation();
   const navigate = useNavigate();
   const handleLogin = (e) => {
@@ -15,12 +17,23 @@ const Login = () => {
     const password = form.password.value;
     loginUser(email, password)
       .then((result) => {
-        console.log(result.user);
-        Swal.fire({
-          title: "Success",
-          text: "User Login Successfully",
-          icon: "success",
-          confirmButtonText: "Ok",
+        const userInfo = {
+          email,
+          name: result.user.displayName,
+          status: "Verified",
+          role: "tourist",
+        };
+        axiosPublic.post("/users", userInfo).then((res) => {
+          if (res.data?.insertedId) {
+            Swal.fire({
+              title: "Success!",
+              text: "User Login Successfully",
+              icon: "success",
+              confirmButtonText: "Ok",
+            });
+            form.reset();
+          }
+          console.log(res.data);
         });
         navigate(location?.state ? location.state : "/");
         form.reset();

@@ -8,8 +8,8 @@ const Dashboard = () => {
 //   const { user } = useAuth();
 
   const isAdmin = false;
-  const isGuide = true;
-  const isTourist = false;
+  const isGuide = false;
+  const isTourist = true;
   return (
     <div className="flex">
       <div className="drawer lg:w-64 lg:drawer-open">

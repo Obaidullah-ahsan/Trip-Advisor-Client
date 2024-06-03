@@ -1,11 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/traveler.svg";
 import GoogleLogin from "../../Components/Shared/GoogleLogin";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
   const { createUser, updateUser } = useAuth();
+  const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -14,19 +18,26 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     createUser(email, password)
-      .then((result) => {
+      .then(() => {
         updateUser(name, photo)
-          .then(() => {})
+          .then(() => {
+            const userInfo = {
+              email,
+              name,
+              status: "Verified",
+              role: "tourist",
+            };
+            axiosPublic.post("/users", userInfo).then((res) => {
+              if (res.data?.insertedId) {
+                toast.success("User Register Successfully");
+                form.reset();
+                navigate("/");
+              }
+            });
+          })
           .catch((error) => {
             console.log(error);
           });
-        console.log(result.user);
-        Swal.fire({
-          title: "Success",
-          text: "User Register Successfully",
-          icon: "success",
-          confirmButtonText: "Ok",
-        });
         form.reset();
       })
       .catch((error) => {
@@ -129,6 +140,7 @@ const Register = () => {
           </Link>
         </p>
       </div>
+      <Toaster />
     </div>
   );
 };
