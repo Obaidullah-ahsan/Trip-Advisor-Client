@@ -2,14 +2,20 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import Select from "react-select";
 
 const ManageUsers = () => {
-  const axiosSecure = useAxiosSecure();
   const [changeRoleLoading, setChangeRoleLoading] = useState(false);
+  const [filter, setFilter] = useState("");
+  const [search, setSearch] = useState("");
+  const [searchText, setSearchText] = useState("");
+  const axiosSecure = useAxiosSecure();
   const { data: users = [], refetch } = useQuery({
-    queryKey: ["users"],
+    queryKey: ["users", filter, search],
     queryFn: async () => {
-      const res = await axiosSecure.get("/users");
+      const res = await axiosSecure.get(
+        `/users?filter=${filter}&search=${search}`
+      );
       return res.data;
     },
   });
@@ -42,9 +48,43 @@ const ManageUsers = () => {
     });
     setChangeRoleLoading(false);
   };
+  const options = [
+    { value: "admin", label: "Admin" },
+    { value: "guide", label: "Guide" },
+    { value: "tourist", label: "Tourist" },
+  ];
+
+  const handleSelect = (e) => {
+    setFilter(e.value);
+  };
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearch(searchText);
+  };
   return (
     <div className="p-2">
-      <h2 className="text-3xl font-semibold">Total Users: {users.length}</h2>
+      <h2 className="text-3xl font-semibold mb-4">Manage Users</h2>
+      <div className="flex items-center justify-evenly">
+        <div className="max-w-80 flex-1">
+          <Select onChange={handleSelect} options={options} />
+        </div>
+        <form onSubmit={handleSearch}>
+          <div className="flex p-1 overflow-hidden border rounded-lg    focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300">
+            <input
+              className="px-6 py-1 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent"
+              type="text"
+              onChange={(e) => setSearchText(e.target.value)}
+              value={searchText}
+              name="roleSearch"
+              placeholder="Enter Role"
+            />
+
+            <button className="px-1 md:px-4 py-1 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none">
+              Search
+            </button>
+          </div>
+        </form>
+      </div>
       <div className="overflow-x-auto mt-4">
         <table className="table rounded-xl">
           {/* head */}
