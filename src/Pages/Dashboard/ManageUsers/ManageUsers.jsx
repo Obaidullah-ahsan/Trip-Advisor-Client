@@ -48,7 +48,7 @@ const ManageUsers = () => {
       <div className="overflow-x-auto mt-4">
         <table className="table rounded-xl">
           {/* head */}
-          <thead className="bg-[#D1A054]">
+          <thead className="bg-blue-400 text-white">
             <tr>
               <th>#</th>
               <th>Name</th>
@@ -89,7 +89,7 @@ const ManageUsers = () => {
                   ) : (
                     <button
                       onClick={() => handleMakeAdmin(user, "admin")}
-                      className={`btn bg-[#D1A054] btn-sm ${
+                      className={`btn btn-outline btn-sm ${
                         changeRoleLoading && "disabled"
                       }`}
                     >
@@ -105,7 +105,7 @@ const ManageUsers = () => {
                   ) : (
                     <button
                       onClick={() => handleMakeAdmin(user, "guide")}
-                      className={`btn bg-[#D1A054] btn-sm ${
+                      className={`btn btn-outline btn-sm ${
                         changeRoleLoading && "disabled"
                       }`}
                     >

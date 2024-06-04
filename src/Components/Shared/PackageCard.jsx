@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import toast from "react-hot-toast";
+import useAuth from "../../Hooks/useAuth";
 
 const PackageCard = ({ pac }) => {
+  const { user } = useAuth();
   const { _id, image, tour_type, tour_title, price } = pac;
   const axiosPublic = useAxiosPublic();
   const handleWishlist = () => {
@@ -12,6 +14,7 @@ const PackageCard = ({ pac }) => {
       tour_title,
       tour_type,
       price,
+      email: user?.email,
     };
     axiosPublic.post("/wishlist", wishlist).then((res) => {
       console.log(res.data);
