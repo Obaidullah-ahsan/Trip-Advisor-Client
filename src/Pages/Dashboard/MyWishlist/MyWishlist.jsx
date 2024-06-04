@@ -4,11 +4,12 @@ import useAuth from "../../../Hooks/useAuth";
 import { Link } from "react-router-dom";
 import { MdDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const MyWishlist = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const { data: wishlist = [] } = useQuery({
+  const { data: wishlist = [], refetch } = useQuery({
     queryKey: ["wishlist"],
     queryFn: async () => {
       const { data } = await axiosSecure.get(`/wishlist/${user?.email}`);
@@ -27,11 +28,11 @@ const MyWishlist = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(id);
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success",
+        axiosSecure.delete(`/wishlist/${id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            toast.success("Wishlist Delete Successfully");
+            refetch();
+          }
         });
       }
     });
