@@ -1,5 +1,8 @@
 - Live site URL [@Trip Advisor](https://trip-advisor-64c2c.web.app/)
 
+- Admin Username : agth@gmail.com
+- Admin Password : 123456
+
 # Trip Advisor
 
 About

@@ -19,7 +19,7 @@ const AdminProfile = () => {
           <div>
             <h2 className="text-2xl font-semibold">{user.displayName}</h2>
             <span className="text-sm uppercase dark:text-gray-600">
-              {role}
+              <div className="badge badge-accent">{role}</div>
             </span>
           </div>
           <div className="space-y-1">
