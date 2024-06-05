@@ -1,9 +1,10 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 // import useAuth from "../Hooks/useAuth";
 import TouristItem from "../Components/Dashboard/Sidebar/TouristItem";
 import AdminItem from "../Components/Dashboard/Sidebar/AdminItem";
 import GuideItem from "../Components/Dashboard/Sidebar/GuideItem";
 import useRole from "../Hooks/useRole";
+import { FaHome } from "react-icons/fa";
 
 const Dashboard = () => {
   //   const { user } = useAuth();
@@ -33,6 +34,12 @@ const Dashboard = () => {
             {role === "tourist" && <TouristItem></TouristItem>}
             {role === "admin" && <AdminItem></AdminItem>}
             {role === "guide" && <GuideItem></GuideItem>}
+            <div className="divider"></div>
+            <li>
+              <Link to="/">
+                <FaHome /> Home
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

@@ -1,52 +1,69 @@
 import { FaIdBadge } from "react-icons/fa";
 import useAuth from "../../../Hooks/useAuth";
 import useRole from "../../../Hooks/useRole";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import { useForm } from "react-hook-form";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const MyProfile = () => {
+  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [role] = useRole();
-  const handleShareStory = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const title = form.title.value;
-    const story = form.story.value;
-    const email = user?.email;
-    console.log(title, story,email);
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = async (data) => {
+    const imageFile = data.image[0];
+    const formData = new FormData();
+    formData.append("image", imageFile);
+    const res = await axiosPublic.post(image_hosting_api, formData);
+    if (res.data.success) {
+      const storyItem = {
+        title: data?.title,
+        story: data?.story,
+        image: res.data.data.display_url,
+        creator_email: user?.email,
+      };
+      const storyRes = await axiosSecure.post("/story", storyItem);
+      if (storyRes.data.insertedId) {
+        toast.success("Story Shered Successfully");
+        reset();
+      }
+    }
   };
   return (
     <section className="min-h-screen bg-white dark:bg-gray-900">
-      <div className="container px-6 py-10 mx-auto">
-        <div className="lg:flex lg:flex-row-reverse lg:items-center lg:-mx-10">
+      <div className="px-6 py-10 mx-auto">
+        <div className="lg:flex lg:flex-row-reverse lg:items-center">
           <div className="lg:w-1/2 lg:mx-10">
-            <h1 className="text-2xl font-semibold text-gray-800 dark:text-white lg:text-3xl">
+            <h1 className="text-2xl font-bold text-gray-800 dark:text-white lg:text-3xl">
               Share your tour story
             </h1>
 
-            <form onSubmit={handleShareStory} className="mt-12">
-              <div className="-mx-2 md:items-center md:flex">
-                <div className="flex-1 px-2">
-                  <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
-                    Story Title
-                  </label>
-                  <input
-                    name="title"
-                    type="text"
-                    placeholder="John Doe"
-                    className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                  />
-                </div>
+            <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
+              <div className="flex-1">
+                <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                  Story Title
+                </label>
+                <input
+                  {...register("title", { required: true })}
+                  type="text"
+                  placeholder="Enter title"
+                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                />
+              </div>
 
-                <div className="flex-1 px-2 mt-4 md:mt-0">
-                  <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
-                    Email
-                  </label>
-                  <input
-                    name="email"
-                    disabled
-                    defaultValue={user?.email}
-                    className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                  />
-                </div>
+              <div className="mt-4 md:mt-3">
+                <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                  Image
+                </label>
+                <input
+                  type="file"
+                  {...register("image", { required: true })}
+                  className="file-input file-input-bordered w-full"
+                />
               </div>
 
               <div className="w-full mt-4">
@@ -54,7 +71,7 @@ const MyProfile = () => {
                   Story
                 </label>
                 <textarea
-                  name="story"
+                  {...register("story", { required: true })}
                   className="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-56 dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                   placeholder="Story"
                 ></textarea>
