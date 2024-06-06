@@ -3,14 +3,14 @@ import useAxiosPublic from "./useAxiosPublic";
 
 const useLoadStory = () => {
   const axiosPublic = useAxiosPublic();
-  const { data: allStory = [] } = useQuery({
+  const { data: stories =[], isLoading } = useQuery({
     queryKey: ["story"],
     queryFn: async () => {
       const { data } = await axiosPublic.get("/story");
       return data;
     },
   });
-  return [allStory];
+  return [stories, isLoading];
 };
 
 export default useLoadStory;

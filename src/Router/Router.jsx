@@ -18,6 +18,8 @@ import AddPackage from "../Pages/Dashboard/AddPackage/AddPackage";
 import DashboardGuideProfile from "../Pages/Dashboard/DashboardGuideProfile/DashboardGuideProfile";
 import GuideAssignedTours from "../Pages/Dashboard/GuideAssignedTours/GuideAssignedTours";
 import PrivateRoutes from "../Routes/PrivateRoutes";
+import StoryDetails from "../Pages/StoryDetails/StoryDetails";
+import AllStory from "../Pages/AllStory/AllStory";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +59,14 @@ const router = createBrowserRouter([
       {
         path: "/categoryBasePackages/:category",
         element: <CategoryBasePackages></CategoryBasePackages>,
+      },
+      {
+        path: "/allstories",
+        element: <AllStory></AllStory>,
+      },
+      {
+        path: "/storydetails/:id",
+        element: <StoryDetails></StoryDetails>,
       },
     ],
   },

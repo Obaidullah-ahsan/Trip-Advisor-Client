@@ -5,16 +5,19 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import { useState } from "react";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const MyProfile = () => {
+  const [shereLoading, setShereLoading] = useState(false);
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [role] = useRole();
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
+    setShereLoading(true);
     const imageFile = data.image[0];
     const formData = new FormData();
     formData.append("image", imageFile);
@@ -25,11 +28,13 @@ const MyProfile = () => {
         story: data?.story,
         image: res.data.data.display_url,
         creator_email: user?.email,
+        date: new Date(),
       };
       const storyRes = await axiosSecure.post("/story", storyItem);
       if (storyRes.data.insertedId) {
         toast.success("Story Shered Successfully");
         reset();
+        setShereLoading(false);
       }
     }
   };
@@ -77,7 +82,11 @@ const MyProfile = () => {
                 ></textarea>
               </div>
 
-              <button className="w-full px-6 py-3 mt-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+              <button
+                className={`${
+                  shereLoading === true && "btn-disabled"
+                } w-full px-6 py-3 mt-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50`}
+              >
                 Share
               </button>
             </form>
