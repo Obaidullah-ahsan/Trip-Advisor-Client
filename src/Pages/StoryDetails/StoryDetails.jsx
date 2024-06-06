@@ -15,21 +15,10 @@ const StoryDetails = () => {
       return data;
     },
   });
-  const sharedUrl = "https://i.ibb.co/SPTJJjM/Greek-chicken-salad-recipe-6.jpg";
+  const sharedUrl = `https://trip-advisor-64c2c.web.app/storydetails/${id}`;
   return (
     <div className="mx-20 my-8">
-      <div className="flex mt-5 items-center">
-        <Link
-          to="/"
-          className="ml-5 flex gap-2 text-lg items-center font-semibold"
-        >
-          <BiArrowBack /> Back to Home
-        </Link>
-        <h2 className="text-4xl font-bold text-center mx-auto mb-6">
-          All Stories
-        </h2>
-      </div>
-      <div className="container flex flex-col mx-auto space-y-6 lg:h-[25rem] lg:flex-row lg:items-center">
+      <div className="container flex flex-col mx-auto space-y-6 lg:h-[28rem] lg:flex-row lg:items-center">
         <div className="w-full lg:w-1/2">
           <div className="lg:max-w-lg">
             <h1 className="text-3xl font-semibold tracking-wide text-gray-800 dark:text-white lg:text-4xl">
