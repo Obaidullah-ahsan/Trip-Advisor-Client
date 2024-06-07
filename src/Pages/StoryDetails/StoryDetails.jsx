@@ -1,9 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import moment from "moment";
 import { FacebookIcon, FacebookShareButton } from "react-share";
-import { BiArrowBack } from "react-icons/bi";
 
 const StoryDetails = () => {
   const axiosPublic = useAxiosPublic();
