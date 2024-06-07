@@ -1,42 +1,40 @@
 import toast from "react-hot-toast";
 import { useState } from "react";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import useRole from "../../../Hooks/useRole";
 import { useForm } from "react-hook-form";
 import { FaIdBadge } from "react-icons/fa";
 
-const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
-
 const DashboardGuideProfile = () => {
   const [shereLoading, setShereLoading] = useState(false);
   const axiosPublic = useAxiosPublic();
-  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [role] = useRole();
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
     setShereLoading(true);
-    const imageFile = data.image[0];
-    const formData = new FormData();
-    formData.append("image", imageFile);
-    const res = await axiosPublic.post(image_hosting_api, formData);
-    if (res.data.success) {
-      const storyItem = {
-        title: data?.title,
-        story: data?.story,
-        image: res.data.data.display_url,
-        creator_email: user?.email,
-        date: new Date(),
-      };
-      const storyRes = await axiosSecure.post("/story", storyItem);
-      if (storyRes.data.insertedId) {
-        toast.success("Story Shered Successfully");
-        reset();
-        setShereLoading(false);
-      }
+    const guideInfo = {
+      name: data?.name,
+      profile_picture: user?.photoURL,
+      contact_details: {
+        email: user?.email,
+        phone: data?.number,
+      },
+      education: data?.education,
+      skills: [data?.skill_1, data?.skill_2],
+      work_experience: {
+        company: data?.company,
+        position: data?.position,
+        duration: data?.duration,
+      },
+    };
+    const res = await axiosPublic.post("/guides", guideInfo);
+    console.log(res.data);
+    if (res.data.insertedId) {
+      toast.success("Story Shered Successfully");
+      reset();
+      setShereLoading(false);
     }
   };
   return (
@@ -78,7 +76,7 @@ const DashboardGuideProfile = () => {
                   Education
                 </label>
                 <input
-                  {...register("name", { required: true })}
+                  {...register("education", { required: true })}
                   type="text"
                   placeholder="Education"
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
