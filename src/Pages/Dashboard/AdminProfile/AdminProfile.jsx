@@ -6,7 +6,7 @@ const AdminProfile = () => {
   const { user } = useAuth();
   const [role] = useRole();
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center">
       <div className="max-w-2xl p-8 bg-base-200 sm:flex sm:space-x-6 dark:bg-gray-50 dark:text-gray-800">
         <div className="flex-shrink-0 w-full mb-6 h-80 sm:h-32 sm:w-32 sm:mb-0">
           <img

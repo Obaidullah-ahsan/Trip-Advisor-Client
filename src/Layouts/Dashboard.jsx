@@ -5,22 +5,20 @@ import AdminItem from "../Components/Dashboard/Sidebar/AdminItem";
 import GuideItem from "../Components/Dashboard/Sidebar/GuideItem";
 import useRole from "../Hooks/useRole";
 import { FaHome } from "react-icons/fa";
+import { MdMenu } from "react-icons/md";
 
 const Dashboard = () => {
   //   const { user } = useAuth();
 
   const [role] = useRole();
   return (
-    <div className="flex">
-      <div className="drawer lg:w-64 lg:drawer-open">
+    <div className="flex flex-col lg:flex-row">
+      <div className="drawer z-50 lg:w-64 lg:drawer-open justify-end min-h-12 h-12">
         <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content">
+        <div className="drawer-content mr-8 my-3">
           {/* Page content here */}
-          <label
-            htmlFor="my-drawer"
-            className="btn btn-primary drawer-button lg:hidden"
-          >
-            Open drawer
+          <label htmlFor="my-drawer" className="drawer-button lg:hidden">
+            <MdMenu size={25} />
           </label>
         </div>
         <div className="drawer-side">

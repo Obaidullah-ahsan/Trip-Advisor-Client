@@ -39,9 +39,47 @@ const DashboardGuideProfile = () => {
   };
   return (
     <section className="min-h-screen bg-white dark:bg-gray-900">
-      <div className="px-6 py-6 mx-auto">
+      <div className="px-6 pb-6 mx-auto">
         <div className="lg:flex lg:flex-row-reverse lg:items-center">
-          <div className="lg:w-[70%] lg:mx-10">
+          <div className="lg:flex lg:mt-0 lg:flex-col lg:items-center lg:w-[30%] lg:mx-10">
+            <img
+              className="object-cover mx-auto rounded-full shrink-0 w-60 h-60"
+              src={user?.photoURL}
+              alt=""
+            />
+
+            <div className="mt-6 space-y-8 md:mt-8">
+              <h2 className="text-2xl font-semibold mb-1">
+                {user.displayName}
+              </h2>
+              <span className="text-sm uppercase dark:text-gray-600">
+                <div className="badge badge-accent">{role}</div>
+              </span>
+              <p className="flex items-start -mx-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-6 h-6 mx-2 text-blue-500 dark:text-blue-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+
+                <span className="mx-2 text-gray-700 truncate w-72 dark:text-gray-400">
+                  {user.email}
+                </span>
+              </p>
+              <p className="flex items-start -mx-2">
+                <FaIdBadge className="w-6 h-6 mx-2 text-blue-500 dark:text-blue-400" />
+                <span className="mx-2 text-gray-700 truncate w-72 dark:text-gray-400">
+                  {user.uid}
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div className="lg:w-[70%] lg:mx-10 mt-12">
             <h1 className="text-2xl font-bold text-gray-800 dark:text-white lg:text-3xl">
               Adding a guide’s profile
             </h1>
@@ -137,44 +175,6 @@ const DashboardGuideProfile = () => {
                 Share
               </button>
             </form>
-          </div>
-
-          <div className="mt-12 lg:flex lg:mt-0 lg:flex-col lg:items-center lg:w-[30%] lg:mx-10">
-            <img
-              className="hidden object-cover mx-auto rounded-full lg:block shrink-0 w-60 h-60"
-              src={user?.photoURL}
-              alt=""
-            />
-
-            <div className="mt-6 space-y-8 md:mt-8">
-              <h2 className="text-2xl font-semibold mb-1">
-                {user.displayName}
-              </h2>
-              <span className="text-sm uppercase dark:text-gray-600">
-                <div className="badge badge-accent">{role}</div>
-              </span>
-              <p className="flex items-start -mx-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6 mx-2 text-blue-500 dark:text-blue-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-
-                <span className="mx-2 text-gray-700 truncate w-72 dark:text-gray-400">
-                  {user.email}
-                </span>
-              </p>
-              <p className="flex items-start -mx-2">
-                <FaIdBadge className="w-6 h-6 mx-2 text-blue-500 dark:text-blue-400" />
-                <span className="mx-2 text-gray-700 truncate w-72 dark:text-gray-400">
-                  {user.uid}
-                </span>
-              </p>
-            </div>
           </div>
         </div>
       </div>
