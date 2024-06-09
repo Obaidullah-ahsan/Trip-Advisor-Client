@@ -3,8 +3,10 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useParams } from "react-router-dom";
 import moment from "moment";
 import { FacebookIcon, FacebookShareButton } from "react-share";
+import useAuth from "../../Hooks/useAuth";
 
 const StoryDetails = () => {
+  const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
   const { data: story = [] } = useQuery({
@@ -29,12 +31,14 @@ const StoryDetails = () => {
             <p className="mt-3 text-sm text-blue-500">
               {moment(story?.date).format("MMMM Do YYYY, h:mm:ss a")}
             </p>
-            <div className="flex gap-5 my-2">
-              <p className="font-semibold">Share: </p>
-              <FacebookShareButton url={sharedUrl} quote="post Decsription">
-                <FacebookIcon size={30} round={true} />
-              </FacebookShareButton>
-            </div>
+            {user && (
+              <div className="flex gap-5 my-2">
+                <p className="font-semibold">Share: </p>
+                <FacebookShareButton url={sharedUrl} quote="post Decsription">
+                  <FacebookIcon size={30} round={true} />
+                </FacebookShareButton>
+              </div>
+            )}
           </div>
         </div>
 

@@ -3,8 +3,10 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { Link, Outlet, useParams } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
 import GiveReview from "../../Components/GiveReview/GiveReview";
+import useAuth from "../../Hooks/useAuth";
 
 const GuideProfile = () => {
+  const { user } = useAuth();
   const { id } = useParams();
   const axiosPublic = useAxiosPublic();
   const { data: guide = [] } = useQuery({
@@ -87,7 +89,7 @@ const GuideProfile = () => {
         </div>
       </section>
       <Outlet></Outlet>
-      <GiveReview guide={guide}></GiveReview>
+      {user && <GiveReview guide={guide}></GiveReview>}
     </div>
   );
 };
