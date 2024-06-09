@@ -13,7 +13,7 @@ const Dashboard = () => {
   const [role] = useRole();
   return (
     <div className="flex flex-col lg:flex-row">
-      <div className="drawer z-50 lg:w-64 lg:drawer-open justify-end min-h-12 h-12">
+      <div className="drawer z-50 lg:w-64 lg:drawer-open lg:sticky justify-end min-h-12 h-12">
         <input id="my-drawer" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content mr-8 my-3">
           {/* Page content here */}
