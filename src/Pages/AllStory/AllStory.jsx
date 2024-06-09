@@ -6,11 +6,11 @@ import useLoadStory from "../../Hooks/useLoadStory";
 const AllStory = () => {
   const [allStory] = useLoadStory();
   return (
-    <div className="mx-20 my-12">
+    <div className="mx-4 md:mx-8 lg:mx-20 my-12">
       <div className="flex items-center">
         <Link
           to="/"
-          className="ml-5 flex gap-2 text-lg items-center font-semibold"
+          className="ml-5 hidden md:flex gap-2 text-lg items-center font-semibold"
         >
           <BiArrowBack /> Back to Home
         </Link>
@@ -18,7 +18,7 @@ const AllStory = () => {
           All Stories
         </h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
         {allStory?.map((storyItem) => (
           <StoryCard storyItem={storyItem} key={storyItem._id}></StoryCard>
         ))}

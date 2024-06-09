@@ -6,7 +6,7 @@ const OurPackages = () => {
   const [packages] = usePackages();
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {packages.slice(0, 3).map((pac, idx) => (
           <PackageCard pac={pac} key={idx}></PackageCard>
         ))}

@@ -4,10 +4,10 @@ import "./Banner.css";
 
 const Banner = () => {
   return (
-    <div className="md:h-[500px]  lg:h-[630px] banner-bg flex items-center">
-      <div className="flex flex-col justify-center h-full max-w-xl lg:max-w-3xl max-h-[300px]  lg:max-h-[450px] p-20 bg-base-100 bg-opacity-30">
-        <h2 className="text-5xl font-bold leading-[60px] mb-3">
-          <span className="text-[80px]">Discover</span>
+    <div className="h-[500px]  lg:h-[630px] banner-bg-sm md:banner-bg flex items-center">
+      <div className="flex flex-col justify-center h-full max-w-xl md lg:max-w-3xl max-h-[400px]  lg:max-h-[450px] p-10 lg:p-20 mr-10 bg-base-100 bg-opacity-30">
+        <h2 className="text-3xl md:text-5xl font-bold md:leading-[60px] mb-3">
+          <span className="text-6xl md:text-[80px]">Discover</span>
           <br />
           New Destination
         </h2>
@@ -17,7 +17,7 @@ const Banner = () => {
           have all the information you need to explore with confidence and
           excitement.
         </p>
-        <div className="bg-white flex items-center gap-3 p-2 max-w-lg my-8">
+        <div className="bg-white md:flex items-center gap-3 p-2 max-w-lg my-8 hidden">
           <div className="flex-1">
             <label className="flex items-center gap-1 mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">
               <MdLocationOn color="#FF9051" size={20} /> Location

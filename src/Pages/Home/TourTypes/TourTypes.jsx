@@ -37,8 +37,8 @@ const TourTypes = () => {
   ];
 
   return (
-    <div className="mx-20 mb-12 bg-base-200 p-6">
-      <h2 className="text-4xl mb-8 font-bold">Select Type for Traveling</h2>
+    <div className="md:mx-8 lg:mx-20 mb-12 bg-base-200 p-6">
+      <h2 className="text-2xl lg:text-4xl mb-8 font-bold">Select Type for Traveling</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7">
         {
             category.map((item,idx)=> <CategoryCard item={item} key={idx}></CategoryCard>)
