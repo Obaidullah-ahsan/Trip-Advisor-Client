@@ -5,7 +5,7 @@ import useAuth from "./useAuth";
 const useRole = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const { data: loadUser = [] } = useQuery({
+  const { data: loadUser = [] ,isLoading} = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
       const { data } = await axiosSecure.get(`/users/${user?.email}`);
@@ -15,7 +15,7 @@ const useRole = () => {
   const role = loadUser.role;
   const status = loadUser.status;
   const userId = loadUser._id;
-  return [role, status, userId];
+  return [role, status, userId, isLoading];
 };
 
 export default useRole;

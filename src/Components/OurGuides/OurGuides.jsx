@@ -1,17 +1,8 @@
-// import { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useGuide from "../../Hooks/useGuide";
 
 const OurGuides = () => {
-  const axiosPublic = useAxiosPublic();
-  const { data: guides = [] } = useQuery({
-    queryKey: ["guides"],
-    queryFn: async () => {
-      const { data } = await axiosPublic.get("/guides");
-      return data;
-    },
-  });
+  const [guides] = useGuide();
   return (
     <div className="mt-10">
       <div className="overflow-x-auto">

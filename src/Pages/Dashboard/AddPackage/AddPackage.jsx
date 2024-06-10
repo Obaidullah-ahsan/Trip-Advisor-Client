@@ -178,12 +178,6 @@ const AddPackage = () => {
           Share
         </button>
       </form>
-      {/* <div>
-        <h2 className="text-2xl mt-12 font-bold text-gray-800 capitalize lg:text-3xl dark:text-white">
-          All tour guides
-        </h2>
-        <OurGuides></OurGuides>
-      </div> */}
     </div>
   );
 };

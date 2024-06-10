@@ -20,6 +20,8 @@ import GuideAssignedTours from "../Pages/Dashboard/GuideAssignedTours/GuideAssig
 import PrivateRoutes from "../Routes/PrivateRoutes";
 import StoryDetails from "../Pages/StoryDetails/StoryDetails";
 import AllStory from "../Pages/AllStory/AllStory";
+import AdminRoutes from "../Routes/AdminRoutes";
+import GuideRoutes from "../Routes/GuideRoutes";
 
 const router = createBrowserRouter([
   {
@@ -95,25 +97,45 @@ const router = createBrowserRouter([
       // Admin Routes
       {
         path: "adminProfile",
-        element: <AdminProfile></AdminProfile>,
+        element: (
+          <AdminRoutes>
+            <AdminProfile></AdminProfile>
+          </AdminRoutes>
+        ),
       },
       {
         path: "addPackage",
-        element: <AddPackage></AddPackage>,
+        element: (
+          <AdminRoutes>
+            <AddPackage></AddPackage>
+          </AdminRoutes>
+        ),
       },
       {
         path: "manageUsers",
-        element: <ManageUsers></ManageUsers>,
+        element: (
+          <AdminRoutes>
+            <ManageUsers></ManageUsers>
+          </AdminRoutes>
+        ),
       },
 
       // Guide Routes
       {
         path: "guideProfile",
-        element: <DashboardGuideProfile></DashboardGuideProfile>,
+        element: (
+          <GuideRoutes>
+            <DashboardGuideProfile></DashboardGuideProfile>
+          </GuideRoutes>
+        ),
       },
       {
         path: "guideAssignedTours",
-        element: <GuideAssignedTours></GuideAssignedTours>,
+        element: (
+          <GuideRoutes>
+            <GuideAssignedTours></GuideAssignedTours>
+          </GuideRoutes>
+        ),
       },
     ],
   },

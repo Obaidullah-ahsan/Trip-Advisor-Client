@@ -3,10 +3,10 @@ import useAuth from "../Hooks/useAuth";
 import { PulseLoader } from "react-spinners";
 import { Navigate } from "react-router-dom";
 
-const AdminRoutes = ({ children }) => {
+const GuideRoutes = ({ children }) => {
   const { user, loading } = useAuth();
   const [role, , , isLoading] = useRole();
-  const isAdmin = role === "admin";
+  const isAdmin = role === "guide";
   if (loading || isLoading) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -20,4 +20,4 @@ const AdminRoutes = ({ children }) => {
   return <Navigate to="/"></Navigate>;
 };
 
-export default AdminRoutes;
+export default GuideRoutes;
