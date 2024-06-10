@@ -19,7 +19,7 @@ const PackageDetails = () => {
   const [guides] = useGuide();
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
-  const { data: packageDetails = [], isLoading } = useQuery({
+  const { data: packageDetails, isLoading ,isFetching} = useQuery({
     queryKey: ["package"],
     queryFn: async () => {
       const { data } = await axiosPublic.get(`/packages/${id}`);
@@ -62,7 +62,7 @@ const PackageDetails = () => {
       }
     });
   };
-  if ((isLoading, loading)) {
+  if ((isLoading, loading, isFetching)) {
     return <span className="loading loading-spinner loading-lg"></span>;
   }
   return (

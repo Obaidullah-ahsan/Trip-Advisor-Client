@@ -15,7 +15,8 @@ const useRole = () => {
   const role = loadUser.role;
   const status = loadUser.status;
   const userId = loadUser._id;
-  return [role, status, userId, isLoading];
+  const name = loadUser.name
+  return [role, status, userId, isLoading,name];
 };
 
 export default useRole;

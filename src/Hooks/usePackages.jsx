@@ -3,14 +3,14 @@ import { useQuery } from "@tanstack/react-query";
 
 const usePackages = () => {
   const axiosPublic = useAxiosPublic();
-  const { data: packages = [] } = useQuery({
+  const { data: packages = [],isLoading } = useQuery({
     queryKey: ["packages"],
     queryFn: async () => {
       const { data } = await axiosPublic.get("/packages");
       return data;
     },
   });
-  return [packages]
+  return [packages,isLoading]
 };
 
 export default usePackages;
