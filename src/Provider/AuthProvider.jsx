@@ -51,7 +51,6 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       const userEmail = currentUser?.email || user?.email;
       const loggedUser = { email: userEmail };
-      console.log(currentUser);
       if (currentUser) {
         axiosPublic
           .post("/jwt", loggedUser, { withCredentials: true })
@@ -70,7 +69,7 @@ const AuthProvider = ({ children }) => {
     return () => {
       return unSubscribe();
     };
-  }, []);
+  }, [axiosPublic, user?.email]);
 
   const authInfo = {
     user,

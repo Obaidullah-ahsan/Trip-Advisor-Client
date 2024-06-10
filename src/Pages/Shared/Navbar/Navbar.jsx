@@ -2,9 +2,19 @@ import { RiMenuUnfoldFill } from "react-icons/ri";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import { MdMenu } from "react-icons/md";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const { data: role = [] } = useQuery({
+    queryKey: ["userNav"],
+    queryFn: async () => {
+      const { data } = await axiosSecure.get(`/users/${user?.email}`);
+      return data.role;
+    },
+  });
   const handleLogout = () => {
     logout()
       .then(() => {})
@@ -114,20 +124,14 @@ const Navbar = () => {
           {user ? (
             <div className="dropdown dropdown-end">
               <div className="flex items-center border-2 rounded-2xl">
-                <MdMenu
-                  tabIndex={0}
-                  size={20}
-                />
+                <MdMenu tabIndex={0} size={20} />
                 <div
                   tabIndex={0}
                   role="button"
                   className="btn btn-ghost btn-circle avatar"
                 >
                   <div className="w-10 rounded-full">
-                    <img
-                      alt="User"
-                      src={user?.photoURL}
-                    />
+                    <img alt="User" src={user?.photoURL} />
                   </div>
                 </div>
               </div>
@@ -150,12 +154,28 @@ const Navbar = () => {
                   </div>
                 </li>
                 <li>
-                  <Link
-                    to="/dashboard/myProfile"
-                    className="btn btn-outline text-[#FF9051] mt-1 min-h-8 h-8"
-                  >
-                    Dashboard
-                  </Link>
+                  {role === "admin" ? (
+                    <Link
+                      to="/dashboard/adminProfile"
+                      className="btn btn-outline text-[#FF9051] mt-1 min-h-8 h-8"
+                    >
+                      Dashboard
+                    </Link>
+                  ) : role === "tourist" ? (
+                    <Link
+                      to="/dashboard/myProfile"
+                      className="btn btn-outline text-[#FF9051] mt-1 min-h-8 h-8"
+                    >
+                      Dashboard
+                    </Link>
+                  ) : (
+                    <Link
+                      to="/dashboard/guideProfile"
+                      className="btn btn-outline text-[#FF9051] mt-1 min-h-8 h-8"
+                    >
+                      Dashboard
+                    </Link>
+                  )}
                 </li>
                 <li>
                   <button

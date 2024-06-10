@@ -8,8 +8,6 @@ import { FaHome } from "react-icons/fa";
 import { MdMenu } from "react-icons/md";
 
 const Dashboard = () => {
-  //   const { user } = useAuth();
-
   const [role] = useRole();
   return (
     <div className="flex flex-col lg:flex-row">

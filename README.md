@@ -1,4 +1,4 @@
-- Live site URL [@Trip Advisor](https://trip-advisor-64c2c.web.app/)
+- Live site URL [@Trip Advisor](https://trip-advisor11.netlify.app/)
 
 - Admin Username : abir60@gmail.com
 - Admin Password : 123456
