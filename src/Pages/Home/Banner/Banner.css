@@ -1,11 +1,14 @@
-.banner-bg {
-  background-image: url("https://i.ibb.co/PWGF1wb/surfboard11.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+@media only screen and (max-width: 600px) {
+  .banner-bg-sm {
+    background-image: url("https://i.ibb.co/RvTNSsn/41015378657234.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
-
-.banner-bg-sm {
-  background-image: url("https://i.ibb.co/RvTNSsn/41015378657234.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+@media only screen and (min-width: 600px) {
+  .banner-bg {
+    background-image: url("https://i.ibb.co/PWGF1wb/surfboard11.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
