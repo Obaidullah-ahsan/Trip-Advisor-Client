@@ -40,3 +40,17 @@ Welcome to Trip Advisor, your ultimate travel companion! Our website is designed
 #### Selected category's name:- assignment12_category_0003
 
 #### Website Themes: Tourist Guide
+
+## Cloning an React project and running locally
+- git clone https://github.com/YourUserName/YourRepositoryName.git
+- cd YourRepositoryName
+- Delete node_modules folder and package-lock.json file if exists
+
+### Run this following commands
+```bash
+npm install
+# this will create node_modules folder and package-lock.json
+npm run dev
+# it will start your react app
+```
+Open [http://localhost:5173](http://localhost:5173) with your browser to see the result.
