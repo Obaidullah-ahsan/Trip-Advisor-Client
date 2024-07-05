@@ -35,6 +35,8 @@ Welcome to Trip Advisor, your ultimate travel companion! Our website is designed
 
 - **My Assigned Tours**:- View all the tours assigned to you. This page allows tour guides to see the details of each assigned tour, including the tour date, time, tourist information.
 
+#### Technologies: HTML, CSS3, TailwindCSS, Java-Script, ReactJs, Firebase(Authentication), NodeJs, ExpressJs MongoDB , JWT etc.
+
 #### Selected category's name:- assignment12_category_0003
 
 #### Website Themes: Tourist Guide
